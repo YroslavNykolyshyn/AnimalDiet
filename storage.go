@@ -27,3 +27,5 @@ func (c Cat) getAvgWeight() int {
 func (co Cow) getAvgWeight() int {
 	return co.FeedAmount
 }
+
+//Привіт

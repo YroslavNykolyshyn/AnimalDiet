@@ -31,7 +31,7 @@ func main() {
 		dog.Name, feedAmDog)
 
 	cat := Cat{
-		Name:       "Juli",
+		Name:       "Kuki",
 		Weight:     3,
 		FeedAmount: 7,
 	}
@@ -57,3 +57,5 @@ func main() {
 	fmt.Printf("Total amount of feed: %d", totalFeedAmount(feedAmCow, feedAmCat, feedAmDog))
 
 }
+
+//Привіт
