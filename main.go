@@ -2,60 +2,35 @@ package main
 
 import "fmt"
 
-type avgWeight interface {
-	getAvgWeight() int
-}
-
-func FeedAmount(a avgWeight, weight int) int {
-	fa := a.getAvgWeight() * weight
-	return fa
-}
-
-func totalFeedAmount(feedAmCow, feedAmCat, feedAmDog int) int {
-	feedAm := feedAmDog + feedAmCow + feedAmCat
-	return feedAm
-}
+const (
+	feedAmountDog = 10
+	feedAmountCat = 7
+	feedAmountCow = 25
+)
 
 func main() {
-	dog := Dog{
-		Name:       "Bob",
-		Weight:     5,
-		FeedAmount: 10,
+	var totalFeedAmount int
+	animals := []Animal{
+		Dog{
+			Name:       "Bob",
+			Weight:     7,
+			FeedAmount: feedAmountDog,
+		},
+		Cat{
+			Name:       "Kuki",
+			Weight:     7,
+			FeedAmount: feedAmountCat,
+		},
+		Cow{
+			Name:       "Star",
+			Weight:     50,
+			FeedAmount: feedAmountCow,
+		},
 	}
-
-	var awDog avgWeight
-	awDog = dog
-	feedAmDog := FeedAmount(awDog, dog.Weight)
-	fmt.Printf("Dog name: %s"+
-		" Amount of food to feed a dog: %d \n",
-		dog.Name, feedAmDog)
-
-	cat := Cat{
-		Name:       "Kuki",
-		Weight:     3,
-		FeedAmount: 7,
+	for _, a := range animals {
+		sum := a.getWeight() * a.getFeedAmount()
+		totalFeedAmount += sum
+		fmt.Printf("Name %s , Wieght %d , FeedAmount %d \n", a.getName(), a.getWeight(), a.getFeedAmount())
 	}
-	var awCat avgWeight
-	awCat = cat
-	feedAmCat := FeedAmount(awCat, cat.Weight)
-	fmt.Printf("Cat name: %s"+
-		" Amount of food to feed a cat: %d \n",
-		cat.Name, feedAmCat)
-
-	cow := Cow{
-		Name:       "Star",
-		Weight:     100,
-		FeedAmount: 25,
-	}
-	var awCow avgWeight
-	awCow = cow
-	feedAmCow := FeedAmount(awCow, cow.Weight)
-	fmt.Printf("Cow name: %s"+
-		" Amount of food to feed a cow: %d \n",
-		cow.Name, feedAmCow)
-
-	fmt.Printf("Total amount of feed: %d", totalFeedAmount(feedAmCow, feedAmCat, feedAmDog))
-
+	fmt.Printf("Total amount of feed: %d", totalFeedAmount)
 }
-
-//Привіт
